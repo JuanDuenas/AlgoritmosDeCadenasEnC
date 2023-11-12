@@ -6,8 +6,8 @@
 #include "egomaniacalNumbers.c"
 #include "productPoint.c"
 #include "Date.c"
-#include "magicMatrix.c"
-#include "nameOwn.c"
+#include "MagicMatrix.c"
+#include "NameOwn.c"
 #include "PrimeFactor.c"
 #include "FriendlyNumbers.c"
 #include "MatrixMultiplication.c"
@@ -33,8 +33,8 @@ int main() {
 void menu(){
     char optionMenu;
     do{
-        printf("Ingrese el indice de la accion que desea realizar\n1. Numero Romano\n2. Factores primos\n3. Name own"
-        "\n4. Numero Egolatra\n5. Numeros Amigos\n6. Date\n7. Producto punto \n8. Multiplicación de matrices \n9. Magic matrix\n0. Salir\n");
+        printf("Ingrese el indice de la accion que desea realizar\n1. Numero Romano\n2. Factores primos\n3. Nombre propio"
+        "\n4. Numero Egolatra\n5. Numeros Amigos\n6. Fecha\n7. Producto punto \n8. Multiplicación de matrices \n9. Matriz magica\n0. Salir\n");
         optionMenu = getchar();
         switch (optionMenu){
         case '1':
@@ -184,10 +184,10 @@ void magicMatrix() {
     int order;
     char out;
     do{
-        printf("Add the order of matrix: ");
+        printf("Introduzca el numero de orden de la matriz: ");
         scanf("%i",&order);
         generateSquare(order);
-        printf("1. Go back\n2. Continue\n");
+        printf("1. Volver\n2. Continuar\n");
         scanf("%c", &out);
         scanf("%c", &out);
     }while(out != '1');
@@ -197,13 +197,13 @@ void nameOwn() {
     char name[50];
     char out;
     do{
-        printf("Add your name: ");
+        printf("Introduzca su nombre: ");
         fflush(stdin);
         fgets(name,50,stdin);
         ownName(name);
         printf("%s",&name);
 
-        printf("1. Go back\n2. Continue\n");
+        printf("1. Volver\n2. Continuar\n");
         scanf("%c", &out);
     }while(out != '1');
 }
@@ -212,10 +212,10 @@ void Date() {
     char date[11];
     char out;
     do{
-        printf("Add a date: ");
+        printf("Introduzca una fecha (dd/mm/aaaa): ");
         scanf("%s",&date);
         dateFormat(date);
-        printf("1. Go back\n2. Continue\n");
+        printf("1. Volver\n2. Continuar\n");
         scanf("%c", &out);
         scanf("%c", &out);
     }while(out != '1');
