@@ -18,8 +18,9 @@ int dateFormat (char date[]) {
     if(day == 31){
         if(month == 4 || month == 6 || month == 9 || month == 11){
             printf("Dato invalido.\n");
+            return 1;
         }
-        return 1;
+
     }
     if(day > 28 && month == 2){
         printf("Dato invalido.\n");
