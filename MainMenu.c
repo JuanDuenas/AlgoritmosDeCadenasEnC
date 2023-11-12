@@ -237,16 +237,7 @@ void productP() {
                 sizeA++;
             }
         }
-        int vectorA[sizeA];
-        char *number = strtok(inputA, " ");
-        for(int i = 0; i <= sizeA; i ++){
-            vectorA[i] = strtol(number, &number, 10);
-            number = strtok(NULL, " ");
-        }
-        for(int i = 0; i < sizeA; i ++){
-            printf("%d", vectorA[i]);
-        }
-      
+        
         printf("Ingrese los numeros del segundo array separados por espacio: ");
         fgets(inputB, sizeof(inputB), stdin);
         inputB[strcspn(inputB, "\n")] = '\0';
@@ -255,22 +246,27 @@ void productP() {
                 sizeB++;
             }
         }
+
+        int vectorA[sizeA];
+        char *number = strtok(inputA, " ");
+        for(int i = 0; i < sizeA; i ++){
+            vectorA[i] = strtol(number, &number, 10);
+            number = strtok(NULL, " ");
+        }
+      
         int vectorB[sizeB];
         char *token = strtok(inputB, " ");
-        for(int i = 0; i <= sizeB; i ++){
+        for(int i = 0; i < sizeB; i ++){
             vectorB[i] = strtol(token, &token, 10);
             token = strtok(NULL, " ");
         }
 
-        for(int i = 0; i < sizeA; i ++){
-            printf("%d", vectorA[i]);
+        double *rta = productPoint(vectorA, vectorB, sizeA, sizeB);
+        if(rta != NULL){
+            printf("El producto punto de los dos vectores es: %.2f\n", *rta);
+        }else{
+            printf("No se puede obtener el producto punto de los dos vectores\n");
         }
-        printf("\n");
-        for(int i = 0; i < sizeB; i ++){
-            printf("%d", vectorB[i]);
-        }
-
-        printf("El producto punto de los dos vectores es: %.2f\n", *productPoint(vectorA, vectorB, sizeA, sizeB));
         printf("Para regresar almenu principal digite 1, para realizar nuevamente la operacion producto punto digite cualquier techa:  ");
         scanf("%c", &out);
         getchar();
