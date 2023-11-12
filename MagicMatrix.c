@@ -37,7 +37,7 @@ void generateSquare(int n) {
     }
 
 
-    printf("The magic matrix of order %d:\n", n);
+    printf("La matriz magica de orden %d:\n", n);
     for (i = 0; i < n; i++) {
         for (j = 0; j < n; j++)
             printf("%3d ", magicSquare[i][j]);
