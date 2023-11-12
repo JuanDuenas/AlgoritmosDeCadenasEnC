@@ -5,11 +5,17 @@
 #include "romanNumeral.c"
 #include "egomaniacalNumbers.c"
 #include "productPoint.c"
+#include "Date.c"
+#include "magicMatrix.c"
+#include "nameOwn.c"
 
 void menu();
 void romanNumber();
 void egomaniacal();
 void productP();
+void Date();
+void magicMatrix();
+void nameOwn();
 
 int main() {
     
@@ -21,23 +27,70 @@ int main() {
 void menu(){
     char optionMenu;
     do{
-        printf("Ingrese el indice de la accion que desea realizar\n1. Numero Romano\n4. Numero Egolatra\n7.Producto punto\n0. Salir\n");
+        printf("Ingrese el indice de la accion que desea realizar\n1. Numero Romano\n3. Name own\n4. Numero Egolatra\n6. Date\n7.Producto punto\n9. Magic matrix\n0. Salir\n");
         optionMenu = getchar();
         switch (optionMenu){
         case '1':
             romanNumber();
             break;
+        case '3':
+            nameOwn();
+            break;
         case '4':
             egomaniacal();
             break;
+        case '6':
+            Date();
+            break;
         case '7':
             productP();
+            break;
+        case '9':
+            magicMatrix();
             break;
         default:
             break;
         }
         getchar();
     }while(optionMenu != '0');
+}
+void magicMatrix(){
+    int order;
+    char out;
+    do{
+        printf("Add the order of matrix: ");
+        scanf("%i",&order);
+        generateSquare(order);
+        printf("1. Go back\n2. Continue\n");
+        scanf("%c", &out);
+        scanf("%c", &out);
+    }while(out != '1');
+}
+void nameOwn(){
+    char name[50];
+    char out;
+    do{
+        printf("Add your name: ");
+        fflush(stdin);
+        fgets(name,50,stdin);
+        ownName(name);
+        printf("%s",&name);
+
+        printf("1. Go back\n2. Continue\n");
+        scanf("%c", &out);
+    }while(out != '1');
+}
+void Date(){
+    char date[11];
+    char out;
+    do{
+        printf("Add a date: ");
+        scanf("%s",&date);
+        dateFormat(date);
+        printf("1. Go back\n2. Continue\n");
+        scanf("%c", &out);
+        scanf("%c", &out);
+    }while(out != '1');
 }
 
 void romanNumber(){
