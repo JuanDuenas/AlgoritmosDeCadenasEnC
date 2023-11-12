@@ -148,7 +148,7 @@ void managePrimeFactor() {
     char out;
 
      do{
-        printf("\nEscriba un número para hallar sus factores primos: ");
+        printf("\nEscriba un numero para hallar sus factores primos: ");
         if(scanf("%d",&num) == 1) {
             if(num<0){
                 num = abs(num);
@@ -177,9 +177,6 @@ void managePrimeFactor() {
         scanf("%c", &out);
         scanf("%c", &out);
      } while(out != '1');
-   
-
-    
 }
 
 void magicMatrix() {
