@@ -8,7 +8,8 @@
 #include "Date.c"
 #include "magicMatrix.c"
 #include "nameOwn.c"
-#include "PrimeFactor.c";
+#include "PrimeFactor.c"
+#include "FriendlyNumbers.c"
 
 void menu();
 void romanNumber();
@@ -18,7 +19,7 @@ void Date();
 void magicMatrix();
 void nameOwn();
 void managePrimeFactor();
-
+void friendlyNumbers();
 
 int main() {
     
@@ -30,8 +31,8 @@ int main() {
 void menu(){
     char optionMenu;
     do{
-        printf("Ingrese el indice de la accion que desea realizar\n1. Numero Romano\n2. Factores primos"
-        "\n3. Name own\n4. Numero Egolatra\n6. Date\n7.Producto punto\n9. Magic matrix\n0. Salir\n");
+        printf("Ingrese el indice de la accion que desea realizar\n1. Numero Romano\n2. Factores primos\n3. Name own"
+        "\n4. Numero Egolatra\n5. Numeros Amigos\n6. Date\n7. Producto punto\n9. Magic matrix\n0. Salir\n");
         optionMenu = getchar();
         switch (optionMenu){
         case '1':
@@ -46,6 +47,9 @@ void menu(){
         case '4':
             egomaniacal();
             break;
+        case '5':
+            friendlyNumbers();
+            break;
         case '6':
             Date();
             break;
@@ -55,11 +59,42 @@ void menu(){
         case '9':
             magicMatrix();
             break;
+        case '0':
+            printf("Ejecución terminada");
+            break;
         default:
             break;
         }
         getchar();
     }while(optionMenu != '0');
+}
+
+void friendlyNumbers(){
+    int a,b;
+    char out;
+
+     do{
+        printf("\nEscriba el primer numero: ");
+        if(scanf("%d",&a) == 1) {
+            printf("\nEscriba el segundo numero: ");
+            if(scanf("%d",&b) == 1) {
+                if(verifyFriendlyNumbers(a,b) == 1) {
+                    printf("Los números %d y %d, son amigos.", a,b);
+                }
+
+            } else {
+            printf("Entrada invalida intente nuevamente.\n");
+            scanf("%c", &out);
+            }
+        } else {
+            printf("Entrada invalida intente nuevamente.\n");
+            scanf("%c", &out);
+        }
+
+        printf("\n1. Volver\n2. Continuar\n");
+        scanf("%c", &out);
+        scanf("%c", &out);
+     } while(out != '1');
 }
 
 void managePrimeFactor() {
@@ -82,7 +117,7 @@ void managePrimeFactor() {
                 printf("\nEl numero %d se conforma de los siguientes factores primos:\n",num);
                 for (int i = 0; i < size; i++) {
                     if(frequency[i][1] != 0) {
-                        printf("[%d^%d] ",frequency[i][0],frequency[i][1]);
+                        printf("(%d^%d) ",frequency[i][0],frequency[i][1]);
                     }
                 }
             }
