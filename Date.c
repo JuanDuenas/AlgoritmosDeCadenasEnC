@@ -2,9 +2,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-
-
-
 int dateFormat (char date[]) {
     int day, month, year;
     char *months[] = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio","Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
