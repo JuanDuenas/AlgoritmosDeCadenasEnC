@@ -1,14 +1,16 @@
-#include <stdio.h>
-
+#include <string.h>
+#include <ctype.h>
 
 void ownName(char name[]){
-    for (int i = 0; i < 50; i++)
-    {
-        if(i == 0 && name[i] != ' '){
+    int space = 1;
+    for(int i = 0; i < strlen(name); i++) {
+        if(space && isalpha(name[i])) {
             name[i] = toupper(name[i]);
-        }else if(name[i] == ' '){
-            name[i+1] = toupper(name[i+1]);
+            space = 0;
+        } else if (isspace(name[i])) {
+            space = 1;
+        } else {
+            name[i] = tolower(name[i]);
         }
     }
-
 }
