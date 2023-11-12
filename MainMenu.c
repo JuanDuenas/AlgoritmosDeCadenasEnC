@@ -8,6 +8,7 @@
 #include "Date.c"
 #include "magicMatrix.c"
 #include "nameOwn.c"
+#include "PrimeFactor.c";
 
 void menu();
 void romanNumber();
@@ -16,6 +17,8 @@ void productP();
 void Date();
 void magicMatrix();
 void nameOwn();
+void managePrimeFactor();
+
 
 int main() {
     
@@ -27,11 +30,15 @@ int main() {
 void menu(){
     char optionMenu;
     do{
-        printf("Ingrese el indice de la accion que desea realizar\n1. Numero Romano\n3. Name own\n4. Numero Egolatra\n6. Date\n7.Producto punto\n9. Magic matrix\n0. Salir\n");
+        printf("Ingrese el indice de la accion que desea realizar\n1. Numero Romano\n2. Factores primos"
+        "\n3. Name own\n4. Numero Egolatra\n6. Date\n7.Producto punto\n9. Magic matrix\n0. Salir\n");
         optionMenu = getchar();
         switch (optionMenu){
         case '1':
             romanNumber();
+            break;
+        case '2':
+            managePrimeFactor();
             break;
         case '3':
             nameOwn();
@@ -54,7 +61,47 @@ void menu(){
         getchar();
     }while(optionMenu != '0');
 }
-void magicMatrix(){
+
+void managePrimeFactor() {
+    int num;
+    char out;
+
+     do{
+        printf("\nEscriba un número para hallar sus factores primos: ");
+        if(scanf("%d",&num) == 1) {
+            if(num<0){
+                num = abs(num);
+            }
+
+            if(num == 0 || num == 1) {
+                printf("\nEl numero %d no posee factores primos.\n",num);
+            } else {
+                int size;
+                int** frequency = primeFactor(num, &size);
+            
+                printf("\nEl numero %d se conforma de los siguientes factores primos:\n",num);
+                for (int i = 0; i < size; i++) {
+                    if(frequency[i][1] != 0) {
+                        printf("[%d^%d] ",frequency[i][0],frequency[i][1]);
+                    }
+                }
+            }
+
+        } else {
+            printf("Entrada invalida intente nuevamente.\n");
+            scanf("%c", &out);
+        }
+
+        printf("\n1. Volver\n2. Continuar\n");
+        scanf("%c", &out);
+        scanf("%c", &out);
+     } while(out != '1');
+   
+
+    
+}
+
+void magicMatrix() {
     int order;
     char out;
     do{
@@ -66,7 +113,8 @@ void magicMatrix(){
         scanf("%c", &out);
     }while(out != '1');
 }
-void nameOwn(){
+
+void nameOwn() {
     char name[50];
     char out;
     do{
@@ -80,7 +128,8 @@ void nameOwn(){
         scanf("%c", &out);
     }while(out != '1');
 }
-void Date(){
+
+void Date() {
     char date[11];
     char out;
     do{
@@ -93,7 +142,7 @@ void Date(){
     }while(out != '1');
 }
 
-void romanNumber(){
+void romanNumber() {
     int number;
     char out;
     do{
@@ -112,7 +161,7 @@ void romanNumber(){
     }while(out != '1'); 
 }
 
-void egomaniacal(){
+void egomaniacal() {
     int number;
     char out;
      do{
@@ -135,7 +184,7 @@ void egomaniacal(){
     }while(out != '1'); 
 }
 
-void productP(){
+void productP() {
     char out;
     getchar();
     do{
