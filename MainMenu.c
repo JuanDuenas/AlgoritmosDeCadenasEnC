@@ -10,6 +10,7 @@
 #include "nameOwn.c"
 #include "PrimeFactor.c"
 #include "FriendlyNumbers.c"
+#include "MatrixMultiplication.c"
 
 void menu();
 void romanNumber();
@@ -20,6 +21,7 @@ void magicMatrix();
 void nameOwn();
 void managePrimeFactor();
 void friendlyNumbers();
+void matrixMultiplication();
 
 int main() {
     
@@ -32,7 +34,7 @@ void menu(){
     char optionMenu;
     do{
         printf("Ingrese el indice de la accion que desea realizar\n1. Numero Romano\n2. Factores primos\n3. Name own"
-        "\n4. Numero Egolatra\n5. Numeros Amigos\n6. Date\n7. Producto punto\n9. Magic matrix\n0. Salir\n");
+        "\n4. Numero Egolatra\n5. Numeros Amigos\n6. Date\n7. Producto punto \n8. Multiplicación de matrices \n9. Magic matrix\n0. Salir\n");
         optionMenu = getchar();
         switch (optionMenu){
         case '1':
@@ -56,6 +58,9 @@ void menu(){
         case '7':
             productP();
             break;
+        case '8':
+            matrixMultiplication();
+            break;
         case '9':
             magicMatrix();
             break;
@@ -67,6 +72,45 @@ void menu(){
         }
         getchar();
     }while(optionMenu != '0');
+}
+
+void matrixMultiplication() {
+    int ax, ay, bx, by;
+    char out;
+
+    do {
+        printf("Matriz A \nEscriba las filas: ");
+        if(scanf("%d", &ax) == 1) {
+            printf("\nEscriba las columnas: ");
+            if(scanf("%d", &ay) == 1) {
+                printf("Matriz B \nEscriba las filas: ");
+                if(scanf("%d", &bx) == 1) {
+                    printf("\nEscriba las columnas: "); 
+                    if(scanf("%d", &by)  == 1) {    
+                        
+                        multiplication(ax,ay,bx,by);
+
+                    } else {
+                        printf("Entrada invalida intente nuevamente.\n");
+                        scanf("%c", &out);
+                    }
+                } else {
+                    printf("Entrada invalida intente nuevamente.\n");
+                    scanf("%c", &out);
+                }
+            } else {
+                printf("Entrada invalida intente nuevamente.\n");
+                scanf("%c", &out);
+            }
+        } else {
+            printf("Entrada invalida intente nuevamente.\n");
+            scanf("%c", &out);
+        }
+        printf("\n1. Volver\n2. Continuar\n");
+        scanf("%c", &out);
+        scanf("%c", &out);
+    } while (out != '1'); 
+   
 }
 
 void friendlyNumbers(){
