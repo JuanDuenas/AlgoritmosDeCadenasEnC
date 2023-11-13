@@ -6,8 +6,8 @@
 #include "EgomaniacalNumbers.c"
 #include "ProductPoint.c"
 #include "Date.c"
-#include "magicMatrix.c"
-#include "nameOwn.c"
+#include "MagicMatrix.c"
+#include "NameOwn.c"
 #include "PrimeFactor.c"
 #include "FriendlyNumbers.c"
 #include "MatrixMultiplication.c"
@@ -33,8 +33,8 @@ int main() {
 void menu(){
     char optionMenu;
     do{
-        printf("Ingrese el indice de la accion que desea realizar\n1. Numero Romano\n2. Factores primos\n3. Name own"
-        "\n4. Numero Egolatra\n5. Numeros Amigos\n6. Date\n7. Producto punto \n8. Multiplicación de matrices \n9. Magic matrix\n0. Salir\n");
+        printf("Ingrese el indice de la accion que desea realizar\n1. Numero Romano\n2. Factores primos\n3. Nombre propio"
+        "\n4. Numero Egolatra\n5. Numeros Amigos\n6. Fecha\n7. Producto punto \n8. Multiplicacion de matrices \n9. Matriz magica\n0. Salir\n");
         optionMenu = getchar();
         switch (optionMenu){
         case '1':
@@ -86,10 +86,12 @@ void matrixMultiplication() {
                 printf("Matriz B \nEscriba las filas: ");
                 if(scanf("%d", &bx) == 1) {
                     printf("\nEscriba las columnas: "); 
-                    if(scanf("%d", &by)  == 1) {    
-                        
-                        multiplication(ax,ay,bx,by);
-
+                    if(scanf("%d", &by)  == 1) {
+                        if(ay == bx) {
+                            multiplication(ax,ay,bx,by);
+                        } else {
+                            printf("Las matrices no se pueden multiplicar.");
+                        }
                     } else {
                         printf("Entrada invalida intente nuevamente.\n");
                         scanf("%c", &out);
@@ -109,8 +111,7 @@ void matrixMultiplication() {
         printf("\n1. Volver\n2. Continuar\n");
         scanf("%c", &out);
         scanf("%c", &out);
-    } while (out != '1'); 
-   
+    } while (out != '1');
 }
 
 void friendlyNumbers(){
@@ -123,9 +124,10 @@ void friendlyNumbers(){
             printf("\nEscriba el segundo numero: ");
             if(scanf("%d",&b) == 1) {
                 if(verifyFriendlyNumbers(a,b) == 1) {
-                    printf("Los números %d y %d, son amigos.", a,b);
+                    printf("Verdadero. Los numeros %d y %d, son amigos.", a,b);
+                } else {
+                    printf("Falso. Los numeros %d y %d, NO amigos.", a,b);
                 }
-
             } else {
             printf("Entrada invalida intente nuevamente.\n");
             scanf("%c", &out);
@@ -146,7 +148,7 @@ void managePrimeFactor() {
     char out;
 
      do{
-        printf("\nEscriba un número para hallar sus factores primos: ");
+        printf("\nEscriba un numero para hallar sus factores primos: ");
         if(scanf("%d",&num) == 1) {
             if(num<0){
                 num = abs(num);
@@ -175,19 +177,16 @@ void managePrimeFactor() {
         scanf("%c", &out);
         scanf("%c", &out);
      } while(out != '1');
-   
-
-    
 }
 
 void magicMatrix() {
     int order;
     char out;
     do{
-        printf("Add the order of matrix: ");
+        printf("Introduzca el numero de orden de la matriz: ");
         scanf("%i",&order);
         generateSquare(order);
-        printf("1. Go back\n2. Continue\n");
+        printf("1. Volver\n2. Continuar\n");
         scanf("%c", &out);
         scanf("%c", &out);
     }while(out != '1');
@@ -197,13 +196,13 @@ void nameOwn() {
     char name[50];
     char out;
     do{
-        printf("Add your name: ");
+        printf("Introduzca su nombre: ");
         fflush(stdin);
         fgets(name,50,stdin);
         ownName(name);
         printf("%s",&name);
 
-        printf("1. Go back\n2. Continue\n");
+        printf("1. Volver\n2. Continuar\n");
         scanf("%c", &out);
     }while(out != '1');
 }
@@ -212,10 +211,10 @@ void Date() {
     char date[11];
     char out;
     do{
-        printf("Add a date: ");
+        printf("Introduzca una fecha (dd/mm/aaaa): ");
         scanf("%s",&date);
         dateFormat(date);
-        printf("1. Go back\n2. Continue\n");
+        printf("1. Volver\n2. Continuar\n");
         scanf("%c", &out);
         scanf("%c", &out);
     }while(out != '1');
