@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "romanNumeral.c"
-#include "egomaniacalNumbers.c"
-#include "productPoint.c"
+#include "RomanNumeral.c"
+#include "EgomaniacalNumbers.c"
+#include "ProductPoint.c"
 #include "Date.c"
 #include "magicMatrix.c"
 #include "nameOwn.c"
