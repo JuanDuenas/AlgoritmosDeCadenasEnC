@@ -228,7 +228,7 @@ void romanNumber() {
 
         if(scanf("%d", &number) == 1){
             printf("%s\n", romanNumeral(number));
-            printf("Para regresar almenu principal digite 1, para convertir otro numero digite cualquier techa:  ");
+            printf("Para regresar al menu principal digite 1, para convertir otro numero digite cualquier tecla:  ");
             scanf("%c", &out);
             scanf("%c", &out);
         }else{
@@ -251,7 +251,7 @@ void egomaniacal() {
             }else{
                 printf("Falso, el numero %d  NO es un numero egolatra\n", number);
             }
-            printf("Para regresar al menu principal digite 1, para ingresar otro numero digite cualquier techa:  ");
+            printf("Para regresar al menu principal digite 1, para ingresar otro numero digite cualquier tecla:  ");
             scanf("%c", &out);
             scanf("%c", &out);
         }else{
@@ -274,6 +274,7 @@ void productP() {
 
         printf("Ingrese los numeros del primer array separados por espacio: ");
         fgets(inputA, sizeof(inputA), stdin);
+        fflush(stdin);
         inputA[strcspn(inputA, "\n")] = '\0';
         for (int i = 0; inputA[i] != '\0'; ++i) {
             if (inputA[i] != ' ') {
@@ -283,6 +284,7 @@ void productP() {
         
         printf("Ingrese los numeros del segundo array separados por espacio: ");
         fgets(inputB, sizeof(inputB), stdin);
+        fflush(stdin);
         inputB[strcspn(inputB, "\n")] = '\0';
         for (int i = 0; inputB[i] != '\0'; ++i) {
             if (inputB[i] != ' ') {
@@ -310,7 +312,7 @@ void productP() {
         }else{
             printf("No se puede obtener el producto punto de los dos vectores\n");
         }
-        printf("Para regresar almenu principal digite 1, para realizar nuevamente la operacion producto punto digite cualquier techa:  ");
+        printf("Para regresar al menu principal digite 1, para realizar nuevamente la operacion producto punto digite cualquier tecla:  ");
         scanf("%c", &out);
         getchar();
     }while(out != '1'); 
